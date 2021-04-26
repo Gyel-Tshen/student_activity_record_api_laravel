@@ -16,6 +16,8 @@ Route::prefix('admin')->group(function() {
 
         Route::get('/participants','ParticipantController@index');
 
+        
+
         // Logout
         Route::get('/logout','AdminUserController@logout');
 

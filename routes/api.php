@@ -23,6 +23,11 @@ use Illuminate\Support\Facades\Hash;
 //create route activity
 
 Route::apiResource('activities', 'ActivityApiController');
+//participation
+Route::post('/participants', 'ParticipantController@store');
+
+//Route::apiResource('users', 'ApiController');
+
 // Route::get('/activity', 'ActivityApiController@index');
 // Route::post('/activity', 'ActivityApiController@store');
 // Route::put('/activity', 'ActivityApiController@update');
@@ -59,12 +64,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('Api')->group(function(){
 
 
-    Route::prefix('auth')->group(function(){
 
-        Route::post('login', 'AuthController@login');
-        Route::post('signup', 'AuthController@signup');
 
-    });
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
+
 
     Route::group([
         'middleware'=>'auth:api'
@@ -72,6 +76,7 @@ Route::namespace('Api')->group(function(){
 
 
         //Route::get('helloworld', 'AuthController@index');
+        Route::put('update', 'UserController@update');
         Route::post('logout', 'AuthController@logout');
 
     });

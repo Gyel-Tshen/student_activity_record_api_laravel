@@ -15,14 +15,16 @@ class CreateParticipantsTable extends Migration
     {
         Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('course');
-            $table->bigInteger('student_no');
-            $table->string('activity_name');
-            $table->string('activity_type');
-            $table->string('activity_category');
-            $table->date('activity_date');
+            $table->integer('user_id');
+            $table->integer('act_id');
+            // $table->string('name');
+            // $table->string('email')->unique();
+            // $table->string('course');
+            // $table->bigInteger('student_no');
+            // $table->string('activity_name');
+            // $table->string('activity_type');
+            // $table->string('activity_category');
+            // $table->date('activity_date');
         });
     }
 

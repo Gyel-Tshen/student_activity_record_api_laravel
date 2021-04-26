@@ -53,7 +53,7 @@ class UsersController extends Controller
     public function update(Request $request, $id) {
 
         // Find the product
-        $activities = Activity::find($id);
+        $user = User::find($id);
 
         // Validate The form
         $request->validate([
@@ -64,7 +64,7 @@ class UsersController extends Controller
 
         ]);
         // Updating the product
-        $activities->update([
+        $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'course' => $request->course,

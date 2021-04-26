@@ -30,9 +30,9 @@ class AuthController extends Controller
 
         $user->access_token = $token->accessToken;
 
-        return response()->json([
-            "user"=>$user
-        ], 200);
+        return response()->json(
+            $user
+        , 200);
     }
 
     public function signup(Request $request){

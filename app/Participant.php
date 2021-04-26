@@ -8,7 +8,7 @@ class Participant extends Model
 {
     public $table ="participants";
     protected $fillable = [
-        'name', 'email', 'course', 'student_no','activity_name', 'activity_type','activity_category', 'activity_date'
+        'user_id', 'act_id'
     ];
     public $timestamps = false;
 }
