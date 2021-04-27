@@ -65,7 +65,11 @@ Route::namespace('Api')->group(function(){
 
 
 
-
+    //Route::post('/register', 'UserController@register');
+    //Route::post('/login', 'UserController@login');
+    //Route::get('/user', 'UserController@getCurrentUser');
+    //Route::post('/update', 'UserController@update');
+    //Route::get('/logout', 'UserController@logout');
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
 
