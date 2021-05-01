@@ -8,7 +8,7 @@ class Activity extends Model
 {
     public $table ="activities";
 
-    protected $fillable = ['activity_name', 'activity_type','activity_category', 'activity_date'];
+    protected $fillable = ['activity_name', 'activity_type','activity_category', 'activity_year', 'activity_semester'];
 
     public $timestamps = false;
 

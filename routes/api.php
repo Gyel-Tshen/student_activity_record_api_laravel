@@ -22,16 +22,13 @@ use Illuminate\Support\Facades\Hash;
 
 //create route activity
 
-Route::apiResource('activities', 'ActivityApiController');
+
 //participation
 Route::post('/participants', 'ParticipantController@store');
 
 //Route::apiResource('users', 'ApiController');
 
-// Route::get('/activity', 'ActivityApiController@index');
-// Route::post('/activity', 'ActivityApiController@store');
-// Route::put('/activity', 'ActivityApiController@update');
-// Route::delete('/activity', 'ActivityApiController@destory');
+
 
 
 //update
@@ -54,9 +51,9 @@ Route::post('/participants', 'ParticipantController@store');
 
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 //sign in and sign out
@@ -74,14 +71,21 @@ Route::namespace('Api')->group(function(){
     Route::post('signup', 'AuthController@signup');
 
 
-    Route::group([
-        'middleware'=>'auth:api'
-    ], function(){
+    Route::middleware('auth:api')->group(function (){
+
+
 
 
         //Route::get('helloworld', 'AuthController@index');
         Route::put('update', 'UserController@update');
         Route::post('logout', 'AuthController@logout');
+        Route::apiResource('activities', 'ActivityApiController');
+        Route::post('change-password', 'AuthController@change_password');
+
+        //oute::get('/activity', 'ActivityApiController@index');
+        //Route::post('/addactivity', 'ActivityApiController@store');
+        // Route::put('/activity', 'ActivityApiController@update');
+        // Route::delete('/activity', 'ActivityApiController@destory');
 
     });
 
