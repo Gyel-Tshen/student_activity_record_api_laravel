@@ -26,7 +26,8 @@ class ActivityController extends Controller
            'activity_name' => 'required',
            'activity_type' => 'required',
            'activity_category' => 'required',
-           'activity_date' => 'required',
+           'activity_year' => 'required',
+           'activity_semester' => 'required',
 
         ]);
 
@@ -34,7 +35,8 @@ class ActivityController extends Controller
             'activity_name' => $request->activity_name,
             'activity_type' => $request->activity_type,
             'activity_category' => $request->activity_category,
-            'activity_date' => $request->activity_date,
+            'activity_year' => $request->activity_year,
+            'activity_semester' => $request->activity_semester,
 
         ]);
 

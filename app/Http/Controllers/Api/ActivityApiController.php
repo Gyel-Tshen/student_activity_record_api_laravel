@@ -37,7 +37,8 @@ class ActivityApiController extends Controller
         $activity -> activity_name = $request->activity_name;
         $activity -> activity_type = $request->activity_type;
         $activity -> activity_category = $request->activity_category;
-        $activity -> activity_date = $request->activity_date;
+        $activity -> activity_year = $request->activity_year;
+        $activity -> activity_semester = $request->activity_semester;
 
         if(auth()->user()->activities()->save($activity)){
 
