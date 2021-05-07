@@ -42,10 +42,8 @@ class ActivityApiController extends Controller
 
         if(auth()->user()->activities()->save($activity)){
 
-            return response()->json([
-                'date'=> $activity,
-                'msg' => 'sccuessfully created'
-            ],201);
+            return response()->json(
+                $activity,201);
 
 
 

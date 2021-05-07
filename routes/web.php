@@ -16,8 +16,9 @@ Route::prefix('admin')->group(function() {
 
         Route::get('/participants','ParticipantController@index');
 
-        
+        Route::get('/add', 'UsersController@add');
 
+        Route::post('/addnew', 'UsersController@addnew');
         // Logout
         Route::get('/logout','AdminUserController@logout');
 

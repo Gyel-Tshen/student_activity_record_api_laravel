@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="row">
-
+<a style="float:right; margin-bottom:25px;" class="btn btn-secondary" href="/admin/add">add</a>
         <div class="col-md-12">
             <div class="card">
                 <div class="header">

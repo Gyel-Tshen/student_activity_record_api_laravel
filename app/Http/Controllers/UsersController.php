@@ -28,10 +28,11 @@ class UsersController extends Controller
 
         ]);
 
-        Activity::create([
+        User::create([
             //'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+            'role_id'=> $request->role_id,
 
 
         ]);
@@ -89,5 +90,22 @@ class UsersController extends Controller
 
         return view('admin.users.details', compact('orders'));
 
+    }
+    public function add(){
+        return view('admin.users.register');
+    }
+    public function addnew(Request $request){
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'role' => 'required'
+
+        ]);
+        User::create([
+            'email' => $request->email,
+            'password'=>bcrypt($request->password),
+            'role' => $request->role,
+        ]);
+        return back()->with('msg', 'User Added!');
     }
 }
