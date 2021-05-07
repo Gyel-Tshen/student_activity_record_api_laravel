@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Hash;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
@@ -56,6 +59,30 @@ class AuthController extends Controller
         //     $user
         // , 200);
     }
+
+
+    public function update(Request $request){
+        if(!$user){
+            return response()->json([
+                'success' => false,
+                'message' => 'User is not found'
+            ]);
+        }
+
+        unset($data['token']);
+
+        $updatedUser = User::where('id', $user->id)->update($data);
+        $user =  User::find($user->id);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Information has been updated successfully!',
+            'user' =>$user
+        ]);
+    }
+
+
+
 
     public function signup(Request $request){
 

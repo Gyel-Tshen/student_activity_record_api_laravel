@@ -12,6 +12,8 @@ use App\Mail\PasswordReset;
 
 class UserController extends Controller
 {
+
+    
 //     public function register(Request $request){
 //         $plainPassword=$request->password;
 //         $password=bcrypt($request->password);
@@ -85,27 +87,9 @@ class UserController extends Controller
 // }
 
 
-// public function update(Request $request){
-//     $user=$this->getCurrentUser($request);
-//     if(!$user){
-//         return response()->json([
-//             'success' => false,
-//             'message' => 'User is not found'
-//         ]);
-//     }
-
-//     unset($data['token']);
-
-//     $updatedUser = User::where('id', $user->id)->update($data);
-//     $user =  User::find($user->id);
-
-//     return response()->json([
-//         'success' => true,
-//         'message' => 'Information has been updated successfully!',
-//         'user' =>$user
-//     ]);
-// }
-
 
 
 }
+
+
+
