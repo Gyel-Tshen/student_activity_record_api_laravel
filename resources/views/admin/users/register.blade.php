@@ -26,10 +26,10 @@
                     <input style="padding-right:10px;" class="form-control" padding= "0px 15px 0px 15px" name ="email" placeholder="email"/>
                     </br>
                     <label for="password" class="form-label"> Password </label>
-                    <input class="form-control" name="password" placeholder="passwordl"/>
+                    <input class="form-control" type="password" name="password" placeholder="passwordl"/>
                     </br>
                     <label for="Role" class="form-label"> Role </label>
-                    <input class="form-control" type="password" name="role" placeholder="role"/>
+                    <input class="form-control"type="text" name="role" placeholder="role"/>
                     </br>
                     <button type="submit" class="btn btn-secondary">Add</button>
                 </form>

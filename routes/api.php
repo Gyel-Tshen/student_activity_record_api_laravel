@@ -77,10 +77,14 @@ Route::namespace('Api')->group(function(){
 
 
         //Route::get('helloworld', 'AuthController@index');
-        Route::put('update', 'AuthController@update');
+        Route::put('update/{id}', 'AuthController@update');
         Route::post('logout', 'AuthController@logout');
-        Route::apiResource('activities', 'ActivityApiController');
+        //Route::apiResource('activities', 'ActivityApiController');
         Route::post('change-password', 'AuthController@change_password');
+        Route::get('showUserProfile', 'UserApiController@showUserProfile');
+        Route::post('participateActivity', 'UserApiController@participate_activity');
+        Route::post('activities', 'ActivityApiController@store');
+        Route::post('participation', 'ActivityApiController@participate');
         //Route::put('/updateprofile/{id}', 'UserCOntroller@updateprofile');
         //oute::get('/activity', 'ActivityApiController@index');
         //Route::post('/addactivity', 'ActivityApiController@store');

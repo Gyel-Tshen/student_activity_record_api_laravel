@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Activity;
 use App\Http\Controllers\Controller;
+use App\Participation;
 
 class ActivityApiController extends Controller
 {
@@ -49,7 +50,7 @@ class ActivityApiController extends Controller
 
         }else {
             return response()->json([
-                'date'=> 'activtity null',
+                'data'=> 'activity null',
                 'msg' => 'Unable to created'
             ],500);
         }
@@ -85,13 +86,13 @@ class ActivityApiController extends Controller
         //return Activity::find($id);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
     public function update(Request $request, $id)
     {
         //update activity
@@ -117,6 +118,19 @@ class ActivityApiController extends Controller
                     'message' => 'activity could not be updated',
             ], 500);
         }
+    }
+
+
+
+    public function participate(Request $request){
+
+        $participant = new Participation();
+        $participant -> user_id = $request->user_id;
+        $participant -> activity_id = $request->activity_id;
+
+        $participant->save();
+            return response()->json(
+                $participant,201);
     }
 
     /**

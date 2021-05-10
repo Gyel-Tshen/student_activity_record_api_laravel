@@ -14,8 +14,12 @@ class CreateParticipationsTable extends Migration
     public function up()
     {
         Schema::create('participations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->primary(['user_id','activity_id']);
+            $table->integer('user_id');
+            $table->integer('activity_id');
+            
+            //$table->timestamps();
+
         });
     }
 

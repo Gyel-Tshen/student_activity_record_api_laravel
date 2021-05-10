@@ -59,7 +59,6 @@ class UsersController extends Controller
         // Validate The form
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
             'course' => 'required',
             'student_no' => 'required',
 
@@ -67,7 +66,6 @@ class UsersController extends Controller
         // Updating the product
         $user->update([
             'name' => $request->name,
-            'email' => $request->email,
             'course' => $request->course,
             'student_no' => $request->student_no
         ]);

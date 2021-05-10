@@ -61,24 +61,24 @@ class AuthController extends Controller
     }
 
 
-    public function update(Request $request){
-        if(!$user){
-            return response()->json([
-                'success' => false,
-                'message' => 'User is not found'
-            ]);
+    public function update(Request $request, $id){
+        if($users = User::find($id)){
+            $users->name = is_null($request->name) ? $user->name : $request->name;
+            $users->course = is_null($request->course) ? $user->course : $request->course;
+            $users->student_no = is_null($request->student_no) ? $user->student_no : $request->student_no;
+
+            $users->save();
+
+            return response()->json($users,200);
+
+        }
+        else{
+            return response()->json($users,406);
         }
 
-        unset($data['token']);
+        //$users->thumbnail = $request->avatar->store('avatars','public');
 
-        $updatedUser = User::where('id', $user->id)->update($data);
-        $user =  User::find($user->id);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Information has been updated successfully!',
-            'user' =>$user
-        ]);
     }
 
 

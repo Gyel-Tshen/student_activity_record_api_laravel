@@ -18,7 +18,7 @@ class CreateActivitiesTable extends Migration
             $table->string('activity_name');
             $table->string('activity_type');
             $table->string('activity_category');
-            $table->integer('activity_year');
+            $table->String('activity_year');
             $table->string('activity_semester');
         });
     }

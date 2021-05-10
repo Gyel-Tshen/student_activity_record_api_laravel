@@ -39,7 +39,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function activities() {
-        return $this->belongsToMany('App\Activity');
+    public function activities()
+    {
+        return $this->belongsToMany('App\Activity')->withPivot('note');
     }
 }
