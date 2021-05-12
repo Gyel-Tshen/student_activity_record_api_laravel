@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Activity;
+use App\ActivityUser;
 use Hash;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use JWTAuth;
@@ -78,6 +80,27 @@ class AuthController extends Controller
 
         //$users->thumbnail = $request->avatar->store('avatars','public');
 
+
+    }
+
+    public function participateActivity(Request $request){
+        //$id = Auth::guard('api')->user()->id;
+        $activities = new ActivityUser();
+
+
+        $activities -> user_id = $request->user_id;
+        $activities -> activity_id = $request->activity_id;
+        //$activities->activity_id = is_null($request->activity_id) ? $activities->activity_id : $request->activity_id;
+        //$users->save();
+        //$activities->save();
+        $activities->save();
+        // DB::table('activity_user')->insert([
+        //     'user_id' => $activities->user_id,
+        //     'activity_id' => $activities->activity_id,
+        // ]);
+
+        //$users->activities()->attach($activities);
+        return response() -> json($users, 200);
 
     }
 

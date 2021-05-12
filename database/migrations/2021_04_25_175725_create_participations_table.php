@@ -14,10 +14,10 @@ class CreateParticipationsTable extends Migration
     public function up()
     {
         Schema::create('participations', function (Blueprint $table) {
-            $table->primary(['user_id','activity_id']);
+
             $table->integer('user_id');
             $table->integer('activity_id');
-            
+            $table->primary(['user_id','activity_id']);
             //$table->timestamps();
 
         });

@@ -69,6 +69,7 @@ Route::namespace('Api')->group(function(){
     //Route::get('/logout', 'UserController@logout');
     Route::post('login', 'AuthController@login');
     Route::post('signup', 'AuthController@signup');
+    Route::get('getactivities/{id}', 'ActivityApiController@getUserActivities');
 
 
     Route::middleware('auth:api')->group(function (){
@@ -77,12 +78,13 @@ Route::namespace('Api')->group(function(){
 
 
         //Route::get('helloworld', 'AuthController@index');
+
+
         Route::put('update/{id}', 'AuthController@update');
         Route::post('logout', 'AuthController@logout');
-        //Route::apiResource('activities', 'ActivityApiController');
         Route::post('change-password', 'AuthController@change_password');
         Route::get('showUserProfile', 'UserApiController@showUserProfile');
-        Route::post('participateActivity', 'UserApiController@participate_activity');
+        Route::put('participate', 'AuthController@participateActivity');
         Route::post('activities', 'ActivityApiController@store');
         Route::post('participation', 'ActivityApiController@participate');
         //Route::put('/updateprofile/{id}', 'UserCOntroller@updateprofile');

@@ -41,6 +41,6 @@ class User extends Authenticatable
 
     public function activities()
     {
-        return $this->belongsToMany('App\Activity')->withPivot('note');
+        return $this->belongsToMany(Activity::class,'participations');
     }
 }

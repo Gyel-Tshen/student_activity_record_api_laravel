@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Activity extends Model
+class ActivityUser extends Model
 {
     /**
     * The attributes that should be hidden for arrays.
@@ -13,13 +13,14 @@ class Activity extends Model
     * @var array
     */
     public $table = 'activity_user';
+
+    protected $fillable = ['user_id', 'activity_id'];
+
+    public $timestamps = false;
     /**
     * The attributes that should be hidden for arrays.
     *
     * @var array
     */
-    protected $fillable = [
-        'user_id','activity_id'
-    ];
 
 }

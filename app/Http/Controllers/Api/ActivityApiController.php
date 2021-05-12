@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Activity;
+use App\User;
 use App\Http\Controllers\Controller;
 use App\Participation;
 
@@ -60,6 +61,8 @@ class ActivityApiController extends Controller
         //return Activity::create($request->all());
     }
 
+
+
     /**
      * Display the specified resource.
      *
@@ -96,6 +99,7 @@ class ActivityApiController extends Controller
     public function update(Request $request, $id)
     {
         //update activity
+
         $activity = auth()->user()->activities()->find($id);
 
         if(!$activity){
@@ -118,6 +122,31 @@ class ActivityApiController extends Controller
                     'message' => 'activity could not be updated',
             ], 500);
         }
+    }
+
+    public function getUserActivities($id){
+        // if($users = User::find($id)){
+        //     $users->activities as $activity
+
+        //     $activity = User::find($users)->activities()->get();
+        //     return response()->json($activity, 200);
+        // }
+        // return response()->json($activity, 406);
+        //$activities = new Participations();
+        //$activities -> user_id = $request->user_id;
+        if($users = User::find($id)){
+
+            $activities = User::find($id)->activities;
+            return response()->json(['activity'=>$activities], 200);
+        }
+        else{
+            return response()->json($users, 401);
+        }
+
+
+
+
+
     }
 
 
