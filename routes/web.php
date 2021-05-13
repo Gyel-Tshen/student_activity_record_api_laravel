@@ -19,6 +19,8 @@ Route::prefix('admin')->group(function() {
         Route::get('/add', 'UsersController@add');
 
         Route::post('/addnew', 'UsersController@addnew');
+
+        Route::post('/importcsv', 'UsersController@importbulk');
         // Logout
         Route::get('/logout','AdminUserController@logout');
 

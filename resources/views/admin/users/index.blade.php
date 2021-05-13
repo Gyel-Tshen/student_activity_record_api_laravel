@@ -21,8 +21,8 @@
                             <th>Student ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Role</th>
                             <th>Course</th>
-                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,13 +33,9 @@
                                 <td>{{ $user->student_no }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->role }}</td>
                                 <td>{{ $user->course }}</td>
-                                <td>
-                                    <button class="btn btn-sm btn-success ti-close" title="Block User"></button>
 
-                                   {{ link_to_route('users.show', 'Details', $user->id, ['class'=>'btn btn-success btn-sm']) }}
-
-                                </td>
 
                             </tr>
                         @endforeach

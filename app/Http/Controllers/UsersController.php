@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 //use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
@@ -78,6 +80,37 @@ class UsersController extends Controller
 
     }
 
+    public function importbulk(Request $request){
+        $validator = Validator::make($request->all(), [
+            'file' => 'required',
+        ]);
+
+        if ($validator -> fails()){
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $file = $request->file('file');
+        $csvData = file_get_contents($file);
+
+        $rows = array_map('str_getcsv', explode("\n", $csvData));
+        $header = array_shift($rows);
+
+        foreach($rows as $row){
+
+            $row = array_combine($header, $row);
+
+            User::create([
+                'email'=>$row['email'],
+                'password'=>bcrypt(uniqid()),
+                'role'=>$row['role'],
+                'active'=>1,
+            ]);
+        }
+        return back()->with('msg', 'User Bulk Added!');
+
+
+
+    }
 
     public function show($id) {
 
