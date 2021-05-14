@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Services\User\UserImport;
 //use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -80,7 +81,7 @@ class UsersController extends Controller
 
     }
 
-    public function importbulk(Request $request){
+    public function importbulk(Request $request, UserImport $userImport){
         $validator = Validator::make($request->all(), [
             'file' => 'required',
         ]);
@@ -92,21 +93,21 @@ class UsersController extends Controller
         $file = $request->file('file');
         $csvData = file_get_contents($file);
 
-        $rows = array_map('str_getcsv', explode("\n", $csvData));
+        $rows = array_map("str_getcsv", explode("\n", $csvData));
+        array_pop($rows);
+
         $header = array_shift($rows);
 
-        foreach($rows as $row){
-
-            $row = array_combine($header, $row);
-
-            User::create([
-                'email'=>$row['email'],
-                'password'=>bcrypt(uniqid()),
-                'role'=>$row['role'],
-                'active'=>1,
-            ]);
+        if(!$userImport->checkImportData($rows, $header))
+        {
+            $request->session()->flash('error_rows', $userImport->getErrorRows());
+            return redirect()->back()->with('msg', 'Error in data. Correct and re-upload');
         }
-        return back()->with('msg', 'User Bulk Added!');
+
+        $userImport->createUsers($header, $rows);
+
+
+        return redirect()->back()->with('msg', 'User Bulk Added!');
 
 
 

@@ -14,6 +14,12 @@
 </div>
 
 <div class="form-group">
-    <label for="activity_date">Activity Date:</label>
-    <input type="date" name="activity_date" id="activity_date" class="form-control border-input">
+    <label for="activity_year">Activity Year:</label>
+    <input type="text" name="activity_year" id="activity_year" class="form-control border-input">
 </div>
+
+<div class="form-group">
+    <label for="activity_semseter">Activity Semester:</label>
+    <input type="text" name="activity_semseter" id="activity_semseter" class="form-control border-input">
+</div>
+

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Participation;
+use App\User;
+use App\Activity;
 use Illuminate\Http\Request;
 
 class ParticipationController extends Controller
@@ -12,9 +14,15 @@ class ParticipationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getActivitiesbyUser(User $user)
     {
-        //
+        // $user = User::find($user);
+        // $activities = $user->activities
+        // $activities = $user->activities;
+
+        $activities -> Activity::with('users')->get();
+
+        return view('admin.participation.getActivitiesbyUser', compact('participation'));
     }
 
     /**

@@ -24,8 +24,8 @@
                             <th>Activity Name</th>
                             <th>Activity Type</th>
                             <th>Activity Category</th>
-                            <th>Activity Date</th>
-                            <th>Actions</th>
+                            <th>Activity Year</th>
+                            <th>Activity Semester</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,9 +34,10 @@
                                 <td>{{$activity->activity_name}}</td>
                                 <td>{{$activity->activity_type}}</td>
                                 <td>{{$activity->activity_category}}</td>
-                                <td>{{$activity->activity_date}}</td>
-                                <td></td>
-                                </td>
+                                <td>{{$activity->activity_year}}</td>
+                                <td>{{$activity->activity_semester}}</td>
+
+                        
                             </tr>
                         @endforeach
                         </tbody>

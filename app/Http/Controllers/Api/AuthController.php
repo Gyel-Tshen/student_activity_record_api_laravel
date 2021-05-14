@@ -32,34 +32,10 @@ class AuthController extends Controller
             ], 401);
 
         }
-
         $token = $user->createToken('myapptoken');//->accessToken;
         $user->token = $token->accessToken;
-        //$response = $user
-            //'user' => $user,
-            //'token' => $token
-        //;
-        return response($user, 200);
+        return response()->json($user, 200);
 
-
-
-        // $credentials = request(['email', 'password']);
-
-        // if(!Auth::attempt($credentials)){
-        //     return response()->json([
-        //         'message'=> 'Invalid email or password'
-        //     ], 401);
-        // }
-
-        // $user = $request->user();
-
-        // $token = $user->createToken('Access Token');
-
-        // $user->access_token = $token->accessToken;
-
-        // return response()->json(
-        //     $user
-        // , 200);
     }
 
 
